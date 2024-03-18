@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>leoschat</title>
+    <title>{% block title %}{% endblock %}leoschat</title>
 
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
@@ -23,8 +23,7 @@
 
       </div>
     </nav>
-     <div class="p-10 lg:p-20 text-center">
-      <h1 class="text-3xl lg:text-6xl text-white"> Leo's chat</h1>
-     </div>
+     {% block content %}
+      {% endblock %}
   </body>
 </html>
