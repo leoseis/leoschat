@@ -1,6 +1,7 @@
 from django.contrib.auth import login
 from django.shortcuts import render, redirect
 from django. contrib. auth.models import User, auth
+from django .contrib import messages
 
 from .forms import SignUpForm
 
@@ -22,6 +23,25 @@ def signup(request):
         form = SignUpForm()
     
     return render(request, 'core/signup.html', {'form': form})
+
+
+def login(request):
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+
+        user = auth.authenticate(username=username, password=password)
+
+        if user is not None:  # if user is valid
+            auth.login(request, user)
+            return redirect('/')
+        else:  # user not valid
+            messages.info(request, 'Credentials Invalid')
+            return redirect('login')
+        
+    else:
+        return render(request, 'core/login.html')
+
 
 def logout(request):
     auth.logout(request)

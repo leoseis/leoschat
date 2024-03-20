@@ -22,7 +22,7 @@
 
         <a href="{% url 'logout' %}" class="px-5 py-3 rounded-xl text-white bg-blue-400 hover:bg-violet-600">Log out</a> 
         {% else %}
-        <a href="/login/" class="text-wite hovher:text-blue-200">Log in</a>
+        <a href="{% url 'login' %}" class="text-wite hovher:text-blue-200">Log in</a>
 
         <a href="/signup/" class="px-5 py-3 rounded-xl text-white  bg-blue-400 hover:bg-violet-600">Sign up</a>
       {% endif %}
