@@ -12,6 +12,15 @@ def rooms(request):
         'rooms':rooms
     })
 
+@login_required
+def room(request, slug):
+    room = Room.objects.get(slug=slug)
+    
+    return render(request, 'room/room.html',{
+        'room':room
+    })
+    
+
 
 
 # Create your views here.
