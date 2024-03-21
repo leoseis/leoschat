@@ -1,4 +1,4 @@
-from django.contrib.auth.decorators import login_required            # imprtinf a decorator
+from django.contrib.auth.decorators import login_required            # importing  a decorator
 from django.shortcuts import render
 
 
