@@ -11,17 +11,17 @@
     <div class="chat-messages space-y-3" id="chat-messages">
         <div class="p-4 bg-gray-200 rounded-xl">
             <p class="font-semibold">Username</p>
-            <p> The message lorem lpsum dolar set</p>
+            <p> Hello guys  any bugs to share?</p>
         </div>
 
         <div class="p-4 bg-gray-200 rounded-xl">
             <p class="font-semibold">Username</p>
-            <p> The message lorem lpsum dolar set</p>
+            <p> can someone tell me more about wensockets </p>
         </div>
 
         <div class="p-4 bg-gray-200 rounded-xl">
             <p class="font-semibold">Username</p>
-            <p> The message lorem lpsum dolar set</p>
+            <p> hello people</p>
         </div>
     </div>
     <div class="lg:w-2/4 mt-6 mx-4 lg:mx-auto p-4 bg-white rounded-xl">
@@ -34,4 +34,29 @@
     </div>
     
 </div>
+{% endblock %}
+
+{% block scripts %}
+{{ room.slug|json_script:"json-roomname" }}   
+
+<script>
+    const roomName = JSON.parse(document.getElementById('json-roomname').textContent);
+    const chatSocket = new WebSocket(
+        'ws://'
+        + window.location.host
+        + '/ws/'
+        + roomName
+        + '/'
+    );
+
+    chatSocket.onmessage = function(e) {
+        console.log('onmessage')
+
+    }
+    chatSocket.onclose = function(e) {
+        console.log('onclose')
+
+
+    }
+</script>
 {% endblock %}

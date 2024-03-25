@@ -36,15 +36,17 @@ LOGIN_URL = '/login/'
 # Application definition
 
 INSTALLED_APPS = [
+    'daphne',
+    'channels',
+    'core',
+    'room',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'channels',
-    'core',
-    'room',
+    
 ]
 
 MIDDLEWARE = [
@@ -76,7 +78,13 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'leoschat.wsgi.application'
-ASGI_APPLICATION = 'djangochat.asgi.application'
+ASGI_APPLICATION = 'leoschat.asgi.application'
+
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels.layers.InMemoryChannelLayer'
+    }
+}
 
 
 # Database
