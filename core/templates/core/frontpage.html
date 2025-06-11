@@ -1,11 +1,47 @@
-{% extends 'core/base.html' %}                    <!-- this means everything will be extended from base.html file-->
+{% extends 'core/base.html' %}
 
-{% block title %}Welcome | {% endblock %}                
+{% block title %}Welcome | {% endblock %}
 
-{% block content %}                                <!--this would be added in additon from t but this will be unique for this page-->
+{% block content %}
+<div class="min-h-screen flex flex-col justify-center items-center bg-gradient-to-br from-indigo-600 to-purple-700">
+    
+    <div class="p-10 lg:p-20 text-center animate-fade-in-up">
+        <h1 class="text-4xl lg:text-6xl text-white font-extrabold drop-shadow-lg mb-6">
+            👋 Welcome to <span class="text-yellow-300">Leo's Chat</span> 🚀
+        </h1>
 
-<div class="p-10 lg:p-20 text-center">
-    <h1 class="text-3xl lg:text-6xl text-white">  Welcome to Leo's chat</h1>     
-   </div>
+        <p class="text-lg lg:text-2xl text-white/90 mb-8 animate-fade-in-up delay-200">
+            Connect, chat, and collaborate seamlessly ✨
+        </p>
+
+       
+    </div>
+
+</div>
+
+<style>
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .animate-fade-in-up {
+        animation: fadeInUp 1s ease-out forwards;
+    }
+
+    .delay-200 {
+        animation-delay: 0.2s;
+    }
+
+    .delay-300 {
+        animation-delay: 0.3s;
+    }
+</style>
 
 {% endblock %}
