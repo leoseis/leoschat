@@ -1,46 +1,74 @@
 {% extends 'core/base.html' %}
 
-{% block title %}SignUp page| {% endblock %}
+{% block title %}SignUp | {% endblock %}
 
-{% block content %}  
+{% block content %}
 
+<div class="min-h-screen flex flex-col justify-center items-center bg-gradient-to-br from-indigo-600 to-purple-700">
 
-<div class="p-10 lg:p-20 text-center">
-    <h1 class="text-3xl lg:text-6xl text-white"> Sign Up</h1>
-   </div>
-   <form method="post" action="." class="lg:w-1/4 px-4 mx-auto">
-    {% csrf_token %}
-
-    <div class="mb-5">
-        <label class="text-white">Username</label>
-
-        <input type="text" name="username" class="w-full mt-2 px-4 py-2 rounded-xl">
+    <div class="p-10 lg:p-20 text-center animate-fade-in-up">
+        <h1 class="text-4xl lg:text-6xl text-white font-extrabold drop-shadow-lg mb-6">
+            ✨ Create Your Account 🚀
+        </h1>
+        <p class="text-lg text-white/90 mb-8">
+            Join Leo's Chat and start connecting today! 🔗
+        </p>
     </div>
 
-    <div class="mb-5">
-        <label class="text-white">Password</label>
+    <form method="post" action="." class="bg-white rounded-3xl shadow-2xl p-10 w-full max-w-md animate-fade-in-up delay-300">
+        {% csrf_token %}
 
-        <input type="password" name="password1" class="w-full mt-2 px-4 py-2 rounded-xl">
-    </div>
+        <div class="mb-5">
+            <label class="font-semibold text-gray-700">👤 Username</label>
+            <input type="text" name="username" class="w-full mt-2 px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-indigo-500 transition">
+        </div>
 
-    <div class="mb-5">
-        <label class="text-white">Repeat password</label>
+        <div class="mb-5">
+            <label class="font-semibold text-gray-700">🔒 Password</label>
+            <input type="password" name="password1" class="w-full mt-2 px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-indigo-500 transition">
+        </div>
 
-        <input type="password" name="password2" class="w-full mt-2 px-4 py-2 rounded-xl">
-    </div>
-    
-    {% if form.errors %}
-    {% for field in form %}
-        {% for error in field.errors %} 
-            <div class="mb-5 p-4 rounded-xl bg-red-300 text-white">
-                <p>{{ error|escape }}</p>
-            </div>
-        {% endfor %}
-    {% endfor %}
-{% endif %}
+        <div class="mb-5">
+            <label class="font-semibold text-gray-700">🔒 Repeat Password</label>
+            <input type="password" name="password2" class="w-full mt-2 px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-indigo-500 transition">
+        </div>
 
-<button class="px-5 py-3 rounded-xl text-white  bg-blue-400 hover:bg-violet-700">Submit</button>
-</form>
+        {% if form.errors %}
+            {% for field in form %}
+                {% for error in field.errors %}
+                    <div class="mb-5 p-4 rounded-xl bg-red-400 text-white font-semibold">
+                        <p>{{ error|escape }}</p>
+                    </div>
+                {% endfor %}
+            {% endfor %}
+        {% endif %}
+
+        <button class="w-full py-3 mt-4 rounded-xl text-white bg-gradient-to-r from-indigo-500 to-purple-500 hover:from-purple-600 hover:to-indigo-600 font-semibold shadow-lg transform transition hover:scale-105">
+            🚀 Sign Up
+        </button>
+    </form>
+
+</div>
+
+<style>
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .animate-fade-in-up {
+        animation: fadeInUp 1s ease-out forwards;
+    }
+
+    .delay-300 {
+        animation-delay: 0.3s;
+    }
+</style>
 
 {% endblock %}
-
